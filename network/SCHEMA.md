@@ -2,16 +2,21 @@
 
 ## IP Networks
 
-
 * Use the 10.x.x.x network.
-* Assign IPs according to 10.[Module].[Function].[Device] 
+* Assign IPs according to `10.[Module].[Function].[Device]`
 * Isolate devices and networks by function, then by module.
-* Cross-module devices use the special vehicle-to-vehicle “bridge” 10.254.0.0/16 wireless backbone network.
+* Cross-module devices use bridge networks. We provide the special high speed short range vehicle-to-vehicle “bridge” `10.254.0.0/16` wireless backbone network.
 * Strictly avoid reusing IP addresses anywhere: avoid future network address translation nightmares.
 * Generally, use /24 subnets for each network and /16 subnets for each location.
 * Generally, isolate networks on a per-function and per-subnet level.
 * Generally, limit hardware routers between networks. Rather connect devices to all relevant networks using multiple ethernet interfaces, and optionally provide software routing.
 * Sync timing across vehicles using GPS 1PPS when available, fallback to local NTP server
+
+
+Oiur LAN topology contains three types of networks:
+* **Module Networks** define each physical module. eg `10.0.0.0/16` defines the camp.
+* **Bridge Networks** provide inter-module communication, such as vehicle-to-vehicle, vehicle-to-camp, and vehicle-to-wearable. eg `10.254.0.0/16` defines our high speed short range wireless backbone.
+* **Functional Networks** provide isolated communication on a single module. These networks appear on multiple modules, uniquely identified by incoroporating the module number into the IP address. eg `10.1.32.0/24` defines the Robot module's "otto" autonomy sensor network.
 
 ```
 ID   Module Network         Module Name        Description
@@ -20,10 +25,11 @@ ID   Module Network         Module Name        Description
 1    10.1.0.0/16            robot              Robot vehicle
 2    10.2.0.0/16            dancefloor         Dancefloor vehicle
 
+
 ID   Bridge Network         Bridge Name        Description
 --   ---------------        -----------        -----------
-64   10.64.0.0/16           lightbridge        Vehicle-to-Vehicle lighting-specific bridge
-254  10.254.0.0/16          bridge             Vehicle-to-Vehicle highest speed backbone
+64   10.64.0.0/16           lightbridge        Lighting-specific bridge including wearable access
+254  10.254.0.0/16          bridge             High speed short range backbone
 
 ID   Functional Network     Function Name      Description
 --   -------------------    -------------      -----------
@@ -31,7 +37,7 @@ ID   Functional Network     Function Name      Description
 32   10.<module>.32.0/24    otto               Autonomy Capabilities
 48   10.<module>.48.0/24    bms                Battery Management System
 64   10.<module>.64.0/19    lights             Lighting network
-** Note: These are isolated and identical networks on (mostly) every module
+
 ** Note: Spaced to support /19 networks and leaving .0.0 blank.
 ```
 
