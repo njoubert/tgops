@@ -20,7 +20,6 @@ Our LAN topology contains three types of networks:
 * **Bridge Networks** provide inter-module communication, such as the vehicle-to-vehicle bridge.
 * **Functional Networks** provide communication on a single module for a specific functional capability.
 
-
 IP Networks:
 ```
 ID   Module Network         Module Name        Description
@@ -77,9 +76,9 @@ Name each WiFi SSID is names according to the module and the functional LAN of t
 eg:
 
 ```
-    tg::robot::energy    - Wifi Access Point connected to Energy Switch, 10.1.16.0/24
-    tg::robot::otto      - WiFi 
-    tg::lightbridge      - WiFi AP connecting to the lighting bridge network
+    tg::robot::energy    - WiFi AP connected to Energy Switch, 10.1.16.0/24
+    tg::robot::otto      - WiFi AP to access autonomy sensors and compute directly, 10.1.32.0/24
+    tg::lightbridge      - WiFi AP connecting to the lighting bridge network 10.64.0.0/16
 ```
 
 ## Default Credentials
