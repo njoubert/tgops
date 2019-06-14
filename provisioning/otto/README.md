@@ -65,4 +65,4 @@ Edit `/etc/default/isc-dhcp-server` and add only the autonomy interface to the l
 Edit `/etc/dhcp/dhcpd.conf`
 
 * To see logs: `journalctl -u isc-dhcp-server`
-* To see current leases `cat /var/lib/dhcpd/dhcpd.leases`
+* To see current leases `cat /var/lib/dhcp/dhcpd.leases`
