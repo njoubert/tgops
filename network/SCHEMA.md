@@ -1,4 +1,6 @@
-# TechnoGecko IP Address Network Schema
+# TechnoGecko Network Schema
+
+## IP Networks
 
 * Use the 10.x.x.x network.
 * Assign IPs according to 10.[Module].[Function].[Device] 
@@ -35,7 +37,9 @@ Functional Networks    Function Name      Description
 ```
 Routers
 -------
-Vehicle Controller and Energy Controller will provide low-bandwidth IP forwarding to connect autonomy switch, energy switch, and inter-vehicle switch. 
+Vehicle Controller and Energy Controller will provide low-bandwidth 
+IP forwarding to connect autonomy switch, energy switch, 
+and inter-vehicle switch. 
 ```
 
 ```
@@ -45,6 +49,27 @@ Suggestions for device IP assignment:
 .100-200          Preferred for Compute and Sensors
 .200-250          Default range for DHCP assignments.
 ```
+
+## SSID Schema
+
+```
+SSID Schema:
+
+    tg::<module>::<function>
+
+Name each WiFi SSID is names according to the module and the functional LAN 
+of the access point. 
+
+eg:
+
+    tg::robot::energy    - Wifi Access Point connected to Energy Switch, 10.1.16.0/24
+    tg::robot::otto      - WiFi 
+    tg::lightbridge      - WiFi AP connecting to the lighting bridge network
+
+```
+
+
+# Changelog
 
 ```
 # CHANGELOG
