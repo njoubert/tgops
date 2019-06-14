@@ -1,38 +1,40 @@
 # TechnoGecko IP Address Network Schema
 
-* Use the 10.x.x.x Class A IP address range. 
-* Assign IPs according to 10.[Module].[Function].[Device].
+* Use the 10.x.x.x network.
+* Assign IPs according to 10.[Module].[Function].[Device] 
+* Isolate devices and networks by function, then by module.
+* Cross-module devices use the special vehicle-to-vehicle “bridge” 10.254.0.0/16 wireless backbone network.
 * Strictly avoid reusing IP addresses anywhere: avoid future network address translation nightmares.
 * Generally, use /24 subnets for each network and /16 subnets for each location.
 * Generally, isolate networks on a per-function and per-subnet level.
 * Generally, limit hardware routers between networks. Rather connect devices to all relevant networks using multiple ethernet interfaces, and optionally provide software routing.
-* Provide a vehicle-to-vehicle high speed short range wireless backbone. 
 * Sync timing across vehicles using GPS 1PPS when available, fallback to local NTP server
 
 ```
-# Modules (Vehicles):
 
-   10.0.0.0/16        Camp/Whale
-   10.1.0.0/16        Robot vehicle
-   10.2.0.0/16        Dancefloor vehicle
-   ...                <future vehicles>
-   10.254.0.0/16      Vehicle-to-Vehicle highest speed backbone
 
-# Networks for each Vehicle Function:
+Module Network         Module Name        Description
+10.0.0.0/16            whale              Camp/Whale
+10.1.0.0/16            robot              Robot vehicle
+10.2.0.0/16            dancefloor         Dancefloor vehicle
+...                                       <future modules>
+10.64.0.0/16           lightbridge        Vehicle-to-Vehicle lighting-specific bridge
+10.254.0.0/16          bridge             Vehicle-to-Vehicle highest speed backbone
 
-Spaced to support future /19 networks and leaving .0.0 blank.
-   10.<module>.16.0/24    Energy Management System
-   10.<module>.32.0/24    Autonomy Capabilities
-   10.<module>.48.0/24    Battery Management System
-   ...                    <future functionality>
-   10.254.<module>.0/16   Vehicle-to-Vehicle backbone
+Functional Network     Function Name      Description
+10.<module>.16.0/24    energy             Energy Management System
+10.<module>.32.0/24    otto               Autonomy Capabilities
+10.<module>.48.0/24    bms                Battery Management System
+10.<module>.64.0/19    lights             Lighting network
+...                                       <future functionality>
+10.254.<module>.0/16   bridge             Vehicle-to-Vehicle backbone
+** Note: Spaced to support /19 networks and leaving .0.0 blank.
 
-# Routers
-
+Routers
 Vehicle Controller and Energy Controller will provide low-bandwidth IP forwarding to connect autonomy switch, energy switch, and inter-vehicle switch. 
 
 Suggestions for device IP assignment:
-   .16-.64           Preferred for gateway to x.0 network where x is 16- 
-   .100-200          Preferred for Compute and Sensors
-   .200-250          Default range for DHCP assignments.
+.16-.64           Preferred for gateway to x.0 network where x is 16- 
+.100-200          Preferred for Compute and Sensors
+.200-250          Default range for DHCP assignments.
 ```

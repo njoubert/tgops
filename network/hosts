@@ -1,0 +1,64 @@
+# TechnoGecko hosts file
+# See https://docs.google.com/document/d/1cDzG_v06vcvpfKeqd4Cd5LlTE_7ObD4nFI7MDEt6ZM0/edit#
+
+# CHANGELOG
+# [1.0.0] - 2019-06-14
+# General layout 
+#
+
+### vehicle-to-vehicle bridge network
+### 10.254.0.0/16 
+#######################################################################
+
+10.254.1.16		energy1.robot.bridge.tg
+10.254.1.32		otto1.robot.bridge.tg
+10.254.2.16		energy1.dancefloor.bridge.tg
+10.254.2.32		otto1.dancefloor.bridge.tg
+
+### robot network
+### 10.1.0.0/16 
+#######################################################################
+
+# otto::robot network
+# 10.1.32.0/24
+10.1.32.100		otto1.otto.robot.tg
+10.1.32.120		gps-left.otto.robot.tg
+10.1.32.121		gps-right.otto.robot.tg
+10.1.32.130		lidar1.otto.robot.tg
+
+# energy::robot network
+# 10.1.16.0/24
+10.1.16.100		energy1.energy.robot.tg
+10.1.16.48		gbc.energy.robot.tg
+
+# bms::robot network
+# 10.1.48.0/24
+10.1.48.100		gbc.bms.robot.tg
+10.1.48.21		bms1.bms.robot.tg
+10.1.48.22		bms2.bms.robot.tg
+10.1.48.23		bms3.bms.robot.tg
+10.1.48.24		bms4.bms.robot.tg
+
+### dancefloor network
+### 10.2.0.0/16
+#######################################################################
+
+# otto::dancefloor network
+# 10.2.32.0/24
+10.2.32.100		otto1.otto.dancefloor.tg
+10.2.32.120		gps-left.otto.dancefloor.tg
+10.2.32.121		gps-right.otto.dancefloor.tg
+10.2.32.130		lidar1.otto.dancefloor.tg
+
+# energy::dancefloor network
+# 10.2.16.0/24
+10.2.16.100		energy1.energy.dancefloor.tg
+10.2.16.48		gbc.energy.dancefloor.tg
+
+# bms::dancefloor network
+# 10.2.48.0/24
+10.2.48.100		gbc.bms.dancefloor.tg
+10.2.48.21		bms1.bms.dancefloor.tg
+10.2.48.22		bms2.bms.dancefloor.tg
+10.2.48.23		bms3.bms.dancefloor.tg
+10.2.48.24		bms4.bms.dancefloor.tg
