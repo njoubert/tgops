@@ -54,6 +54,13 @@ and inter-vehicle switch.
 .200-250          Default range for DHCP assignments.
 ```
 
+## Layout
+
+tg::robot Robot network layout
+
+[Draw.io Diagram](https://drive.google.com/file/d/1UimhuNxK7GUXQ43VrYicd7frDcxEkvqW/view?usp=sharing)
+![tg::robot network]()
+
 ## SSID Schema
 
 ```
