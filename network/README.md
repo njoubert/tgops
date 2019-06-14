@@ -59,7 +59,7 @@ and inter-vehicle switch.
 tg::robot Robot network layout
 
 [Draw.io Diagram](https://drive.google.com/file/d/1UimhuNxK7GUXQ43VrYicd7frDcxEkvqW/view?usp=sharing)
-![tg::robot network]()
+![tg::robot network](https://github.com/njoubert/tgops/raw/master/network/TechnoGecko%20Autonomy%20Networking%20Proposal%20v2.6.png)
 
 ## SSID Schema
 
