@@ -1,6 +1,6 @@
 # TechnoGecko Network Schema
 
-## IP Networks
+## IP Networks v2.6.1
 
 * Use the 10.x.x.x network.
 * Assign IPs according to `10.[Module].[Function].[Device]`
@@ -81,9 +81,9 @@ eg:
 ```
 # CHANGELOG
 
-## [1.0.1] - 2019-06-15
+## [2.6.1] - 2019-06-15
 - Split into Bridge and Module networks
-- Add light
+- Add lights and lightbridge
 
-## [1.0.0] - 2019-06-14
-- Initial layout
+## [2.6.0] - 2019-06-14
+- Initial import from https://docs.google.com/document/d/1cDzG_v06vcvpfKeqd4Cd5LlTE_7ObD4nFI7MDEt6ZM0/edit#
