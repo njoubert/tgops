@@ -1,6 +1,10 @@
-# TechnoGecko Network Schema
+# TechnoGecko Networking
 
-## IP Networks v2.6.1
+Niels Joubert, Nate Wennyk, Randy Butera, Gil Shotan, Ken Wells
+
+As TechnoGecko expands, the required networking infrastructure will need to grow in order to accommodate energy controllers, battery management systems, autonomy sensors and compute, audio-visual systems, etc, on each vehicle. Similarly, our communication infrastructure will have to support multiple vehicles interacting in complex ways. Here, we look ahead at our networking infrastructure in order to make smart decisions early that will support multiple vehicles with many diverse capabilities. 
+
+## IP Network Schema [v2.6.1]
 
 At TechnoGecko we:
 * Use the 10.x.x.x network.
@@ -89,9 +93,9 @@ eg:
 ```
 # CHANGELOG
 
-## [2.6.1] - 2019-06-15
+## [v2.6.1] - 2019-06-15
 - Split into Bridge and Module networks
 - Add lights and lightbridge
 
-## [2.6.0] - 2019-06-14
+## [v2.6.0] - 2019-06-14
 - Initial import from https://docs.google.com/document/d/1cDzG_v06vcvpfKeqd4Cd5LlTE_7ObD4nFI7MDEt6ZM0/edit#
