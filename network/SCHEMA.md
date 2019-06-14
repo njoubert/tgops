@@ -6,20 +6,18 @@ At TechnoGecko we:
 * Use the 10.x.x.x network.
 * Assign IPs according to `10.[Module].[Function].[Device]`
 * Strictly avoid duplicate IP addresses anywhere even on different LANs, to ease identification and avoid NAT requirements.
+* Generally isolate networks on a per-function and per-module level, to minimize bridge traffic and avoid subtle timing and bandwidth interaction between functions.
+* Generally limit routering between networks. Rather connect devices to all relevant networks using multiple ethernet interfaces.
+* Generally connect devices with cross-module communication needs directly to bridge networks. 
+* Sync timing across vehicles using GPS 1PPS when possible, or a local NTP server
 
 Our LAN topology contains three types of networks:
 * **Module Networks** define each physical location.
 * **Bridge Networks** provide inter-module communication, such as the vehicle-to-vehicle bridge.
 * **Functional Networks** provide communication on a single module for a specific functional capability.
 
-On principle, we:
-* Generally use /24 subnets for each network and /16 subnets for each module.
-* Generally isolate networks on a per-function and per-subnet level. This minimizes traffic between networks and isolates timing-sensitive and bandwidth-intensive sensors.
-* Generally limit hardware routers between networks. Rather connect devices to all relevant networks using multiple ethernet interfaces, and optionally provide software routing.
-* Generally connect devices with cross-module communication requirements directly to bridge networks. 
-* Sync timing across vehicles using GPS 1PPS when available, fallback to local NTP server
 
-
+IP Networks:
 ```
 ID   Module Network         Module Name        Description
 --   --------------         -----------        -----------
@@ -33,18 +31,19 @@ ID   Bridge Network         Bridge Name        Description
 64   10.64.0.0/16           lightbridge        Lighting-specific bridge including wearable access
 254  10.254.0.0/16          bridge             High speed short range backbone
 
-ID   Functional Network     Function Name      Description
+
+ID   Functional Network*    Function Name      Description
 --   -------------------    -------------      -----------
 16   10.<module>.16.0/24    energy             Energy Management System
 32   10.<module>.32.0/24    otto               Autonomy Capabilities
 48   10.<module>.48.0/24    bms                Battery Management System
 64   10.<module>.64.0/19    lights             Lighting network
 
-** Note: Spaced to support /19 networks and leaving .0.0 blank.
+* Note: Spaced to support /19 networks and leaving .0.0 blank for future routing options.
 ```
 
 ### Routers
-Vehicle Controller and Energy Controller will provide low-bandwidth 
+Vehicle Controller and Energy Controller will provide software 
 IP forwarding to connect autonomy switch, energy switch, 
 and inter-vehicle switch. 
 
