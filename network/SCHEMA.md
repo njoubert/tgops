@@ -2,21 +2,23 @@
 
 ## IP Networks v2.6.1
 
+At TechnoGecko we:
 * Use the 10.x.x.x network.
 * Assign IPs according to `10.[Module].[Function].[Device]`
-* Isolate devices and networks by function, then by module.
-* Cross-module devices use bridge networks. We provide the special high speed short range vehicle-to-vehicle “bridge” `10.254.0.0/16` wireless backbone network.
-* Strictly avoid reusing IP addresses anywhere: avoid future network address translation nightmares.
-* Generally, use /24 subnets for each network and /16 subnets for each location.
-* Generally, isolate networks on a per-function and per-subnet level.
-* Generally, limit hardware routers between networks. Rather connect devices to all relevant networks using multiple ethernet interfaces, and optionally provide software routing.
+* Strictly avoid duplicate IP addresses anywhere even on different LANs, to ease identification and avoid NAT requirements.
+
+Our LAN topology contains three types of networks:
+* **Module Networks** define each physical location.
+* **Bridge Networks** provide inter-module communication, such as the vehicle-to-vehicle bridge.
+* **Functional Networks** provide communication on a single module for a specific functional capability.
+
+On principle, we:
+* Generally use /24 subnets for each network and /16 subnets for each module.
+* Generally isolate networks on a per-function and per-subnet level. This minimizes traffic between networks and isolates timing-sensitive and bandwidth-intensive sensors.
+* Generally limit hardware routers between networks. Rather connect devices to all relevant networks using multiple ethernet interfaces, and optionally provide software routing.
+* Generally connect devices with cross-module communication requirements directly to bridge networks. 
 * Sync timing across vehicles using GPS 1PPS when available, fallback to local NTP server
 
-
-Oiur LAN topology contains three types of networks:
-* **Module Networks** define each physical module. eg `10.0.0.0/16` defines the camp.
-* **Bridge Networks** provide inter-module communication, such as vehicle-to-vehicle, vehicle-to-camp, and vehicle-to-wearable. eg `10.254.0.0/16` defines our high speed short range wireless backbone.
-* **Functional Networks** provide isolated communication on a single module. These networks appear on multiple modules, uniquely identified by incoroporating the module number into the IP address. eg `10.1.32.0/24` defines the Robot module's "otto" autonomy sensor network.
 
 ```
 ID   Module Network         Module Name        Description
