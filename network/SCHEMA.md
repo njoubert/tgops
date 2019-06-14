@@ -2,6 +2,9 @@
 
 ## IP Networks
 
+```
+# IP Networks
+
 * Use the 10.x.x.x network.
 * Assign IPs according to 10.[Module].[Function].[Device] 
 * Isolate devices and networks by function, then by module.
@@ -12,7 +15,6 @@
 * Generally, limit hardware routers between networks. Rather connect devices to all relevant networks using multiple ethernet interfaces, and optionally provide software routing.
 * Sync timing across vehicles using GPS 1PPS when available, fallback to local NTP server
 
-```
 Module Networks        Module Name        Description
 ---------------        -----------        -----------
 10.0.0.0/16            whale              Camp/Whale
@@ -32,17 +34,13 @@ Functional Networks    Function Name      Description
 10.<module>.32.0/24    otto               Autonomy Capabilities
 10.<module>.48.0/24    bms                Battery Management System
 10.<module>.64.0/19    lights             Lighting network
-```
-
-```
+ 
 Routers
 -------
 Vehicle Controller and Energy Controller will provide low-bandwidth 
 IP forwarding to connect autonomy switch, energy switch, 
 and inter-vehicle switch. 
-```
 
-```
 Suggestions for device IP assignment:
 ------------------------------------
 .16-.64           Preferred for gateway to x.0 network where x is 16- 
@@ -53,7 +51,7 @@ Suggestions for device IP assignment:
 ## SSID Schema
 
 ```
-SSID Schema:
+# SSID Schema
 
     tg::<module>::<function>
 
