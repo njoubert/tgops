@@ -63,6 +63,7 @@ and enable it immediately without having to restats.
 
 Edit `/etc/default/isc-dhcp-server` and add only the autonomy interface to the list of interfaces
 Edit `/etc/dhcp/dhcpd.conf`
+Restart service `sudo service isc-dhcp-server restart`
 
 * To see logs: `journalctl -u isc-dhcp-server`
 * To see current leases `cat /var/lib/dhcp/dhcpd.leases`
