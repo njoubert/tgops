@@ -53,7 +53,7 @@ and inter-vehicle switch.
 
 ```
 
-    tg::<module>::<function>
+    tg::<module>[::<function>]
 
 ```
 Name each WiFi SSID is names according to the module and the functional LAN of the access point. 
