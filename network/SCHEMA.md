@@ -3,8 +3,6 @@
 ## IP Networks
 
 
-# IP Networks
-
 * Use the 10.x.x.x network.
 * Assign IPs according to 10.[Module].[Function].[Device] 
 * Isolate devices and networks by function, then by module.
