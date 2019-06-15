@@ -20,7 +20,7 @@ Our network topology contains three types of LANs:
 * **Bridge Networks** provide inter-module communication, for example, the vehicle-to-vehicle wireless bridge.
 * **Functional Networks** provide communication on a single module for a specific functional capability.
 
-### Networks:
+**Networks**
 ```
 ID   Module Network         Module Name        Description
 --   --------------         -----------        -----------
@@ -45,12 +45,12 @@ ID   Functional Network*    Function Name      Description
 * Note: Spaced to support /19 networks and leaving .0.0 blank for future routing options.
 ```
 
-### Routers
+**Routers**
 Vehicle Controller and Energy Controller will provide software 
 IP forwarding to connect autonomy switch, energy switch, 
 and inter-vehicle switch. 
 
-### Suggestions for device IP assignment:
+**Suggestions for device IP assignment**
 ```
 .16-.64           Preferred for gateway to x.0 network where x is 16- 
 .100-200          Preferred for Compute and Sensors
@@ -63,7 +63,7 @@ and inter-vehicle switch.
 
 Name each WiFi SSID is names according to the module and the functional LAN of the access point. 
 
-### Wireless Networks
+**Wireless Networks**
 One network can have multiple access points with the same SSID
 
 ```
