@@ -59,11 +59,8 @@ and inter-vehicle switch.
 
 ## Wireless SSID Schema
 
-```
+```tg::<module>[::<function>]```
 
-    tg::<module>[::<function>]
-
-```
 Name each WiFi SSID is names according to the module and the functional LAN of the access point. 
 
 ### Wireless Networks
