@@ -20,7 +20,7 @@ Our network topology contains three types of LANs:
 * **Bridge Networks** provide inter-module communication, for example, the vehicle-to-vehicle wireless bridge.
 * **Functional Networks** provide communication on a single module for a specific functional capability.
 
-IP Networks:
+### Networks:
 ```
 ID   Module Network         Module Name        Description
 --   --------------         -----------        -----------
@@ -57,14 +57,7 @@ and inter-vehicle switch.
 .200-250          Default range for DHCP assignments.
 ```
 
-## Layout
-
-tg::robot Robot network layout
-
-[Draw.io Diagram](https://drive.google.com/file/d/1UimhuNxK7GUXQ43VrYicd7frDcxEkvqW/view?usp=sharing)
-![tg::robot network](https://github.com/njoubert/tgops/raw/master/network/TechnoGecko%20Autonomy%20Networking%20Proposal%20v2.6.png)
-
-## SSID Schema
+## Wireless SSID Schema
 
 ```
 
@@ -73,13 +66,22 @@ tg::robot Robot network layout
 ```
 Name each WiFi SSID is names according to the module and the functional LAN of the access point. 
 
-Assigned Wireless SSIDs
+### Wireless Networks
+One network can have multiple access points with the same SSID
 
 ```
     tg::robot::energy    - WiFi AP connected to Robot module Energy Switch, 10.1.16.0/24
     tg::robot::otto      - WiFi AP to access Robot module autonomy sensors and compute directly, 10.1.32.0/24
     tg::lightbridge      - WiFi AP connecting to the lighting bridge network 10.64.0.0/16
 ```
+
+## Network Layout Diagram
+
+tg::robot Robot network layout
+
+[Draw.io Diagram](https://drive.google.com/file/d/1UimhuNxK7GUXQ43VrYicd7frDcxEkvqW/view?usp=sharing)
+![tg::robot network](https://github.com/njoubert/tgops/raw/master/network/TechnoGecko%20Autonomy%20Networking%20Proposal%20v2.6.png)
+
 
 ## Default Credentials
 
