@@ -7,7 +7,7 @@ As TechnoGecko expands, the required networking infrastructure will need to grow
 ## IP Network Schema [v2.6.1]
 
 At TechnoGecko we:
-* Use the 10.x.x.x network.
+* Use the `10.0.0.0/8` network.
 * Assign IPs according to `10.[Module].[Function].[Device]`
 * Strictly avoid duplicate IP addresses anywhere even on different LANs, to ease identification and avoid NAT requirements.
 * Generally isolate networks on a per-function and per-module level, to minimize bridge traffic and avoid subtle timing and bandwidth interaction between functions.
@@ -15,9 +15,9 @@ At TechnoGecko we:
 * Generally connect devices with cross-module communication needs directly to bridge networks. 
 * Sync timing across vehicles using GPS 1PPS when possible, or a local NTP server
 
-Our LAN topology contains three types of networks:
+Our network topology contains three types of LANs:
 * **Module Networks** define each physical location.
-* **Bridge Networks** provide inter-module communication, such as the vehicle-to-vehicle bridge.
+* **Bridge Networks** provide inter-module communication, for example, the vehicle-to-vehicle wireless bridge.
 * **Functional Networks** provide communication on a single module for a specific functional capability.
 
 IP Networks:
@@ -73,18 +73,19 @@ tg::robot Robot network layout
 ```
 Name each WiFi SSID is names according to the module and the functional LAN of the access point. 
 
-eg:
+Assigned Wireless SSIDs
 
 ```
-    tg::robot::energy    - WiFi AP connected to Energy Switch, 10.1.16.0/24
-    tg::robot::otto      - WiFi AP to access autonomy sensors and compute directly, 10.1.32.0/24
+    tg::robot::energy    - WiFi AP connected to Robot module Energy Switch, 10.1.16.0/24
+    tg::robot::otto      - WiFi AP to access Robot module autonomy sensors and compute directly, 10.1.32.0/24
     tg::lightbridge      - WiFi AP connecting to the lighting bridge network 10.64.0.0/16
 ```
 
 ## Default Credentials
 
 ```
-
+user: gecko
+pass: techno
 ```
 
 # Changelog
