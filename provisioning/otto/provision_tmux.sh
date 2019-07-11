@@ -13,7 +13,7 @@
 set -e
 
 # echo every command, we're being verbose
-set -v
+set -x
 
 # only run as root, we're installing stuff
 if [ "$EUID" -ne 0 ]
@@ -25,6 +25,6 @@ fi
 PROVISION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Install necessary items
-sudo apt-get install tmux
+sudo apt-get install tmux=2.6-3ubuntu0.1
 ln -s $PROVISION/tmux.conf $HOME/.tmux.conf
 ln -s $PROVISION/tmux $HOME/.tmux
