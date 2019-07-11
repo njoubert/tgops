@@ -5,6 +5,9 @@ Organization:
 * Base OS providing networking.
 * Virtual Machine for all the autonomy work. Keep the ROS environment separate from the base machine, and identical to VM we run on developer machines. 
 
+
+Provisioning scripts for individual applications are provided. See `provision_xxx.sh` files.x
+
 ## Hardware
 
 
