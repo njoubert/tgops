@@ -12,6 +12,9 @@
 # exit when any command fails, we're being conservative
 set -e
 
+# echo every command, we're being verbose
+set -v
+
 # only run as root, we're installing stuff
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
@@ -23,5 +26,5 @@ PROVISION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Install necessary items
 sudo apt-get install tmux
-echo $PROVISION/tmux.conf $HOME/.tmux.conf
-echo $PROVISION/tmux $HOME/.tmux
+ln -s $PROVISION/tmux.conf $HOME/.tmux.conf
+ln -s $PROVISION/tmux $HOME/.tmux
