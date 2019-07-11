@@ -1,8 +1,12 @@
 # `otto1-robot`: Autonomous Vehicle Computer for TechnoGecko
 
+
+Organization:
+* Base OS providing networking.
+* Virtual Machine for all the autonomy work. Keep the ROS environment separate from the base machine, and identical to VM we run on developer machines. 
+
 ## Hardware
 
-Ubuntu 18.04.1 LTS Bionic
 
 
 
@@ -67,23 +71,4 @@ Restart service `sudo service isc-dhcp-server restart`
 
 * To see logs: `journalctl -u isc-dhcp-server`
 * To see current leases `cat /var/lib/dhcp/dhcpd.leases`
-
-
-
-## Installing ROS
-
-From http://wiki.ros.org/melodic/Installation/Source
-
-
-```bash
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-sudo apt update
-sudo apt install ros-melodic-desktop-full
-sudo rosdep init
-rosdep update
-echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
-```
 
