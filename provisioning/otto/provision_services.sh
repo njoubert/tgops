@@ -30,7 +30,5 @@ fi
 # Global vars
 PROVISION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-# Install necessary items
-sudo apt-get install tmux=2.6-3ubuntu0.1
-ln -s $PROVISION/tmux.conf $HOME/.tmux.conf
-ln -s $PROVISION/tmux $HOME/.tmux
+# Disable firewalls. We don't need that on our private network
+ufw disable
