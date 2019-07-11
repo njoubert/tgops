@@ -72,3 +72,17 @@ Restart service `sudo service isc-dhcp-server restart`
 * To see logs: `journalctl -u isc-dhcp-server`
 * To see current leases `cat /var/lib/dhcp/dhcpd.leases`
 
+
+## VM Setup
+
+* TMUX
+	* `sudo apt-get install tmux`
+	* 
+
+* SSH Access
+
+* Shared Folder for remote text editing with Sublime
+
+* Screen Sharing
+
+
