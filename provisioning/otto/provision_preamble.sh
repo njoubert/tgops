@@ -9,11 +9,24 @@
 # EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
-###### PREAMBLE ######
-. provision_preamble.sh
+# exit when any command fails, we're being conservative
+set -e
 
-###### MEAT AND POTATOES ######
-# Install tmux and symlink configs
-sudo apt-get install tmux=2.6-3ubuntu0.1
-ln -s $PROVISION/tmux.conf $HOME/.tmux.conf
-ln -s $PROVISION/tmux $HOME/.tmux
+# echo every command, we're being verbose
+set -x
+
+# ensure Ubuntu 18.04
+if ! lsb_release -a 2>/dev/null | grep -q "Ubuntu 18.04"; then
+    echo "Compatible only with Ubuntu 18.04 LTS"
+    exit
+fi
+
+# only run as root, we're installing stuff
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+# Global vars
+PROVISION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
