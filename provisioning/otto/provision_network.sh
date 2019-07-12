@@ -10,7 +10,7 @@
 # WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 ###### PREAMBLE ######
-#. provision_preamble.sh
+. provision_preamble.sh
 
 SCRIPT_SIG="$(cat <<EOF
  
