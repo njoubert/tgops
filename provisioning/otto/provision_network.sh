@@ -58,6 +58,6 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
 # enable ipv4 routing
-echo -e "$SCRIPT_SIG" > /etc/sysctl.conf
-echo -e "net.ipv4.ip_forward = 1" > /etc/sysctl
+echo -e "$SCRIPT_SIG" >> /etc/sysctl.conf
+echo -e "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 sysctl -w net.ipv4.ip_forward=1
