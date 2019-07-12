@@ -12,14 +12,6 @@
 ###### PREAMBLE ######
 . provision_preamble.sh
 
-SCRIPT_SIG="$(cat <<EOF
- 
-###
-### TechnoGecko Provisioning Script, $(date)
-### 
-EOF
-)"
-
 prompt_and_set_hostname() {
 	echo "The current hostname is \"$HOSTNAME\""
 	read -p "Do you want to change the hostname? [Yn] " -n 1 -r
