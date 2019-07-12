@@ -13,6 +13,10 @@
 . provision_preamble.sh
 
 ###### MEAT AND POTATOES ######
+
+# Install basic editors
+sudo apt install emacs vim git
+
 # Install tmux and symlink configs
 sudo apt-get install tmux=2.6-3ubuntu0.1
 ln -s $PROVISION/tmux.conf $HOME/.tmux.conf

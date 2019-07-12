@@ -13,6 +13,7 @@
 . provision_preamble.sh
 
 ###### MEAT AND POTATOES ######
+
 # Install openssh-server for SSH access
 apt-get install openssh-server
 
