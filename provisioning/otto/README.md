@@ -16,7 +16,7 @@ Install Ubuntu 18.01.1 LTS Bionic.
 
 ### Install basic dev tools and configuration
 
-Run `sudo ./provision_dev_tools.sh`
+Run `sudo ./provision_dev_base.sh`
 * vim, emacs, git
 * tmux, with configuration and plugins
 
@@ -40,7 +40,7 @@ In the future we might prefer to write a manual `/etc/network/interfaces` file
 ```
 ### Provision basic setup
 
-Run `sudo ./provision_base.sh`:
+Run `sudo ./provision_network.sh`:
 * changes hostname
 * disables ipv6
 * enables ipv4 forwarding
@@ -82,8 +82,8 @@ Now you can easily ssh in with
 Virtualbox:
 * Switch the default network from `NAT` to `Bridged` to expose this VM to the broader network.
 
-* TMUX
-	* `sudo ./provision_tmux.sh`
+* Basic Tools (vim, git, emacs, tmux)
+	* `sudo ./provision_dev_base.sh`
 * SSH Access
 	* `sudo ./provision_services.sh`
 * Shared Folder for remote text editing with Sublime
