@@ -48,7 +48,7 @@ prompt_and_generate_ssh_keys() {
 		echo "+ Please add your public SSH key to Gitlab, etc."
 		echo "+   Contents of ~/.ssh/id_rsa.pub:"
 		cat $HOME/.ssh/id_rsa.pub
-	if
+	fi
 }
 
 ###### MEAT AND POTATOES ######
