@@ -49,3 +49,6 @@ echo "+ Symlinking tmux configuration files"
 ln -s $PROVISION/dotfiles/tmux.conf $HOME/.tmux.conf
 ln -s $PROVISION/dotfiles/tmux $HOME/.tmux
 
+# Linking git config files
+echo "+ Linking git config files"
+ln -s $PROVISION/dotfiles/gitconfig $HOME/.gitconfig  

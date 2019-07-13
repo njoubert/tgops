@@ -1,0 +1,4 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Otto Technogecko
+	email = ottotechnogecko@gmail.com

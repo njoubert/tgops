@@ -6,7 +6,28 @@ Organization:
 
 Provisioning scripts for individual applications and areas are provided.
 
-# On Host Zotac Machine
+# Preamble: Credentials
+
+## GITLAB
+
+We have a separate gitlab account for access from the autonomous computers
+
+```
+name:  Otto TechnoGecko
+email: ottotechnogecko@gmail.com
+user:  ottotechnogecko
+pass:  &n5SVjR!
+```
+
+## GMAIL
+
+```
+ottotechnogecko@gmail.com
+&n5SVjR!
+```
+
+
+# Setup: On Host Zotac Machine
 
 ## Step 1: Install Ubuntu and Connect to Internet (temporarily)
 
@@ -18,14 +39,14 @@ Connect to the internet, ideally through WiFi/
 I just copy the repository over, or download from the website
 **Place it in a location you will keep it. We will be creating symlinks into this folder**.
 
-## Step 3: Install basic dev tools and configuration
+## Step 3: Install base environment and configuration
 
 Run `sudo ./provision_010_base.sh`
+* Links `bashrc.sh` and `bash_profile.sh` dotfiles
 * Installs vim, emacs, git, tmux
 * Configures tmux
-* Links `bashrc.sh` and `bash_profile.sh` dotfiles
 
-## Step 4: Configure basic network Network 
+## Step 4: Configure network 
 
 ### Manually Configure Ethernet Interfaces
 
@@ -36,7 +57,7 @@ In the future we might prefer to write a manual `/etc/network/interfaces` file
 10.254.1.32/16,10.254.1.1
 10.1.32.100/24,10.1.32.1
 ```
-### Provision basic setup
+### Provision network
 
 Run `sudo ./provision_020_network.sh`:
 * changes hostname
@@ -52,6 +73,11 @@ Restart service `sudo service isc-dhcp-server restart`
 
 * To see logs: `journalctl -u isc-dhcp-server`
 * To see current leases `cat /var/lib/dhcp/dhcpd.leases`
+
+
+
+
+
 
 # On your Local Dev Machine
 
@@ -74,6 +100,12 @@ Copy your dev machine's public key to otto's authorized keys:
 Now you can easily ssh in with 
 
 `ssh robot-otto1`
+
+
+
+
+
+
 
 # Inside VM for Autonomous System
 

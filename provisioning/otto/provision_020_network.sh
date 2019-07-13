@@ -61,3 +61,7 @@ sysctl -w net.ipv4.ip_forward=1
 # Disable firewalls. We don't need that on our private network
 echo "+ Disabling ufw firewall"
 ufw disable
+
+# Disable firewalls. We don't need that on our private network
+echo "+ Configuring SSH and generating SSH Keys"
+ufw disable
