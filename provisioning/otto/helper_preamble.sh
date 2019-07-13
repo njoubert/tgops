@@ -13,23 +13,23 @@
 set -e
 
 # echo every command, we're being verbose
-# set -x
+set -x
 
-# # ensure Ubuntu 18.04
-# if ! lsb_release -a 2>/dev/null | grep -q "Ubuntu 18.04"; then
-#     echo "ERROR: Compatible only with Ubuntu 18.04 LTS"
-#     exit
-# else
-# 	echo "+ Ubuntu 18.04 Detected"
-# fi
+# ensure Ubuntu 18.04
+if ! lsb_release -a 2>/dev/null | grep -q "Ubuntu 18.04"; then
+    echo "ERROR: Compatible only with Ubuntu 18.04 LTS"
+    exit
+else
+	echo "+ Ubuntu 18.04 Detected"
+fi
 
-# # only run as root, we're installing stuff
-# if [ "$EUID" -ne 0 ]
-#   then echo "ERROR: Please run as root"
-#   exit
-# else
-# 	echo "+ root admin privileged detected"
-# fi
+# only run as root, we're installing stuff
+if [ "$EUID" -ne 0 ]
+  then echo "ERROR: Please run as root"
+  exit
+else
+	echo "+ root admin privileged detected"
+fi
 
 # Global vars
 OTTOEMAIL="ottotechnogecko@gmail.com"
