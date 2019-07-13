@@ -1,33 +1,31 @@
-# `otto1-robot`: Autonomous Vehicle Computer for TechnoGecko
-
+# `otto`: Provisitioning the Autonomous Vehicle Controller for TechnoGecko
 
 Organization:
 * Base OS providing networking.
 * Virtual Machine for all the autonomy work. Keep the ROS environment separate from the base machine, and identical to VM we run on developer machines. 
 
-
-Provisioning scripts for individual applications are provided. See `provision_xxx.sh` files.x
+Provisioning scripts for individual applications and areas are provided.
 
 # On Host Zotac Machine
 
-## Manual Provisioning 2019/06/14
+## Step 1: Install Ubuntu and Connect to Internet (temporarily)
 
-Install Ubuntu 18.01.1 LTS Bionic.
+Install Ubuntu 18.04 LTS Bionic.
+Connect to the internet, ideally through WiFi/
 
-### Install basic dev tools and configuration
+## Step 2: Transfer the `tgops` repository to your new machine
 
-Run `sudo ./provision_dev_base.sh`
-* vim, emacs, git
-* tmux, with configuration and plugins
+I just copy the repository over, or download from the website
+**Place it in a location you will keep it. We will be creating symlinks into this folder**.
 
-### Setup bash dotfiles 
+## Step 3: Install basic dev tools and configuration
 
-Create `~/Code/dotfiles`
-Move and link `.bashrc` here. 
-Make some pretty prints to give information about device.
+Run `sudo ./provision_010_base.sh`
+* Installs vim, emacs, git, tmux
+* Configures tmux
+* Links `bashrc.sh` and `bash_profile.sh` dotfiles
 
-## Network 
-
+## Step 4: Configure basic network Network 
 
 ### Manually Configure Ethernet Interfaces
 
@@ -40,7 +38,7 @@ In the future we might prefer to write a manual `/etc/network/interfaces` file
 ```
 ### Provision basic setup
 
-Run `sudo ./provision_network.sh`:
+Run `sudo ./provision_020_network.sh`:
 * changes hostname
 * disables ipv6
 * enables ipv4 forwarding
@@ -83,9 +81,9 @@ Virtualbox:
 * Switch the default network from `NAT` to `Bridged` to expose this VM to the broader network.
 
 * Basic Tools (vim, git, emacs, tmux)
-	* `sudo ./provision_dev_base.sh`
+	* `sudo ./provision_010_base.sh`
 * SSH Access
-	* `sudo ./provision_services.sh`
+	* `sudo ./provision_020_network.sh`
 * Shared Folder for remote text editing with Sublime
 
 * Screen Sharing

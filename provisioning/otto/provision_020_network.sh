@@ -10,7 +10,7 @@
 # WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 ###### PREAMBLE ######
-. provision_preamble.sh
+. helper_preamble.sh
 
 prompt_and_set_hostname() {
 	echo "The current hostname is \"$HOSTNAME\""
@@ -39,17 +39,25 @@ prompt_and_set_hostname() {
 
 ###### MEAT AND POTATOES ######
 # user prompt to set hostname
+echo "+ Setting hostname"
 prompt_and_set_hostname
 
 # install networking tools and servers
+echo "+ Installig net-tools openssh-server isc-dhcp-server mosh"
 apt install net-tools openssh-server isc-dhcp-server mosh
 
 ### setup networking ###
 # disable ipv6
+echo "+ Disabling IPv6"
 sysctl -w net.ipv6.conf.all.disable_ipv6=1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
 # enable ipv4 routing
+echo "+ Enabling IPv4 Routing"
 echo -e "$SCRIPT_SIG" >> /etc/sysctl.conf
 echo -e "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 sysctl -w net.ipv4.ip_forward=1
+
+# Disable firewalls. We don't need that on our private network
+echo "+ Disabling ufw firewall"
+ufw disable
