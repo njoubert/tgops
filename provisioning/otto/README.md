@@ -76,7 +76,9 @@ Restart service `sudo service isc-dhcp-server restart`
 * To see current leases `cat /var/lib/dhcp/dhcpd.leases`
 
 
+### Install VirtualBox and image of Autonomous VM.
 
+We separate our otto component from the rest for development purposes. So we can snapshot VM.
 
 
 

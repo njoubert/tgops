@@ -9,8 +9,10 @@
 # EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
-###### PREAMBLE ######
+
+###### INCLUDES ######
 . helper_preamble.sh
+. helper_functions.sh
 
 prompt_and_set_hostname() {
 	echo "The current hostname is \"$HOSTNAME\""
@@ -36,7 +38,6 @@ prompt_and_set_hostname() {
 		fi	
 	fi
 }
-
 
 prompt_and_generate_ssh_keys() {
 	read -p "Would you like to generate SSH keys? [Yn] " -n 1 -r

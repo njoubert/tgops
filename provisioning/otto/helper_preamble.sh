@@ -13,7 +13,7 @@
 set -e
 
 # echo every command, we're being verbose
-set -x
+# set -x
 
 # ensure Ubuntu 18.04
 if ! lsb_release -a 2>/dev/null | grep -q "Ubuntu 18.04"; then
