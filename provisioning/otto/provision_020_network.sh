@@ -37,6 +37,20 @@ prompt_and_set_hostname() {
 	fi
 }
 
+
+prompt_and_generate_ssh_keys() {
+	echo "Would you like to generate SSH keys? [Yn] " -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		echo "+ Configuring SSH and generating SSH Keys for $OTTOEMAIL with no passphrase"
+		ssh-keygen -t rsa -b 4096 -C "$OTTOEMAIL" -f $HOME/.ssh/id_rsa -N ""
+		echo "+ Please add your public SSH key to Gitlab, etc."
+		echo "+   Contents of ~/.ssh/id_rsa.pub:"
+		cat $HOME/.ssh/id_rsa.pub
+	if
+}
+
 ###### MEAT AND POTATOES ######
 # user prompt to set hostname
 echo "+ Setting hostname"
@@ -62,6 +76,6 @@ sysctl -w net.ipv4.ip_forward=1
 echo "+ Disabling ufw firewall"
 ufw disable
 
-# Disable firewalls. We don't need that on our private network
-echo "+ Configuring SSH and generating SSH Keys"
-ufw disable
+# Get SSH Keys up
+prompt_and_generate_ssh_keys
+

@@ -32,6 +32,7 @@ set -e
 # fi
 
 # Global vars
+OTTOEMAIL="ottotechnogecko@gmail.com"
 PROVISION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 SCRIPT_SIG="$(cat <<EOF
  

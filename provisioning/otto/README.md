@@ -8,7 +8,7 @@ Provisioning scripts for individual applications and areas are provided.
 
 # Preamble: Credentials
 
-## GITLAB
+**GITLAB**
 
 We have a separate gitlab account for access from the autonomous computers
 
@@ -19,13 +19,12 @@ user:  ottotechnogecko
 pass:  &n5SVjR!
 ```
 
-## GMAIL
+**GMAIL**
 
 ```
 ottotechnogecko@gmail.com
 &n5SVjR!
 ```
-
 
 # Setup: On Host Zotac Machine
 
@@ -64,6 +63,8 @@ Run `sudo ./provision_020_network.sh`:
 * disables ipv6
 * enables ipv4 forwarding
 * installs dhcp server
+* installs ssh
+* generates ssh keys
 
 ### Configure DHCP Server
 
