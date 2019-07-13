@@ -36,8 +36,6 @@ EOF
 )"
 echo -e "$BASHPROFILE_INCLUDE" >> $HOME/.bash_profile
 
-exit
-
 # Install basic editors
 echo "+ Installing emacs, vim, git"
 sudo apt install emacs vim git
