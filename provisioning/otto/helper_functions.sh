@@ -41,3 +41,29 @@ link_if_not_already_link_abort_if_file() {
         echo "    done"
     fi
 }   
+
+# Usage:
+#  read_and_confirm VARNAME "Prompt?" "default"
+read_and_confirm() {
+  local RESULTSVAR=$1
+  local PROMPT="$2"
+  local DEFAULT="$3"
+  if [ "$#" -ne 2 ]; then
+    echo "read_and_confirm requires 2 arguments"
+  fi
+
+  ANSWER="$DEFAULT"
+  while true; do
+    read -p "$PROMPT [$DEFAULT] " -r
+    ANSWER=$REPLY
+    if [ -z $ANSWER ]; then
+        ANSWER="$DEFAULT"
+    fi
+    read -p "You typed $ANSWER, is that correct? [Yn] " -n 1 -r
+    echo ""
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        eval $RESULTSVAR="'$ANSWER'"
+        break
+    fi
+  done
+}
