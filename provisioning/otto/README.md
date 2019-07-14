@@ -84,8 +84,8 @@ Run `sudo ./provision_030_remote_access.sh`:
 Add this to your `.ssh/config`:
 
 ```
-host robot-otto1 192.168.0.52
-    Hostname 192.168.0.52
+host robot-otto1 10.254.1.32
+    Hostname 10.254.1.32
     Port 22
     User gecko
     StrictHostKeyChecking no
@@ -97,7 +97,7 @@ Copy your dev machine's public key to otto's authorized keys:
 
 `cat ~/.ssh/id_rsa.pub | ssh gecko@192.168.0.52 "cat >> .ssh/authorized_keys"`
 
-Now you can easily ssh in with 
+Now you can easily ssh in and it'll use the `gecko` username. 
 
 `ssh robot-otto1`
 
