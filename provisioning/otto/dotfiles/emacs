@@ -21,3 +21,5 @@
 (setq css-indent-offset 2) ; css-mode
 (setq sh-basic-offset 2) ; shell mode
 (setq sh-indent-offset 2) ; shell mode
+(setq smie-indent-basic 2) ; shell mode
+(setq sh-indentation 2) ; shell mode

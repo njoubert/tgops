@@ -10,8 +10,7 @@
 # WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 ###### INCLUDES ######
-. helper_preamble.sh
-. helper_functions.sh
+. helpers.sh
 
 ###### MEAT AND POTATOES ######
 
