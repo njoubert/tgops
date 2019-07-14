@@ -63,8 +63,8 @@ echo_section "Setting hostname"
 prompt_and_set_hostname
 
 # install networking tools and servers
-echo_section "Installig net-tools openssh-server isc-dhcp-server mosh"
-apt install net-tools openssh-server isc-dhcp-server mosh
+echo_section "Installig net-tools openssh-server isc-dhcp-server mosh bmon"
+apt install net-tools openssh-server isc-dhcp-server mosh bmon
 
 ### setup networking ###
 # disable ipv6
