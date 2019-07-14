@@ -19,4 +19,5 @@
 (setq-local web-mode-css-indent-offset 2) ; web-mode, css in html file
 (setq-local web-mode-code-indent-offset 2) ; web-mode, js code in html file
 (setq-local css-indent-offset 2) ; css-mode
-(setq-local sh-basic-offset 2) ; shell mode
+(setq sh-basic-offset 2) ; shell mode
+(setq sh-indent-offset 2) ; shell mode
