@@ -57,7 +57,7 @@ In the future we might prefer to write a manual `/etc/network/interfaces` file
 10.254.1.32/16,10.254.1.1
 10.1.32.100/24,10.1.32.1
 ```
-### Provision network
+### Provision network: ipv4 forwarding, dhcp server
 
 Run `sudo ./provision_020_network.sh`:
 * changes hostname
@@ -69,53 +69,11 @@ Run `sudo ./provision_020_network.sh`:
 * To see logs: `journalctl -u isc-dhcp-server`
 * To see current leases `cat /var/lib/dhcp/dhcpd.leases`
 
-
-### Provision Remote access
+### Provision Remote access: ssh, vnc, smb
 
 Run `sudo ./provision_030_remote_access.sh`:
 * installs ssh
 * generates ssh keys
 * configures Vino for remote VNC access, with password `techno`
-
-
-
-# On your Local Dev Machine
-
-Add this to your `.ssh/config`:
-
-```
-host robot-otto1 10.254.1.32
-    Hostname 10.254.1.32
-    Port 22
-    User gecko
-    StrictHostKeyChecking no
-    UserKnownHostsFile=/dev/null
-    IdentityFile ~/.ssh/id_rsa
-```
-
-Copy your dev machine's public key to otto's authorized keys:
-
-`cat ~/.ssh/id_rsa.pub | ssh gecko@192.168.0.52 "cat >> .ssh/authorized_keys"`
-
-Now you can easily ssh in and it'll use the `gecko` username. 
-
-`ssh robot-otto1`
-
-
-
-
-
-
-
-# Inside VM for Autonomous System
-
-Virtualbox:
-* Switch the default network from `NAT` to `Bridged` to expose this VM to the broader network.
-
-* Basic Tools (vim, git, emacs, tmux)
-	* `sudo ./provision_010_base.sh`
-* SSH Access, VNC access, SMB access
-	* `sudo ./provision_020_network.sh`
-
-
+* configures smb to share `/` and `/home/gecko`
 
