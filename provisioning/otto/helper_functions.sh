@@ -21,7 +21,6 @@ link_if_not_already_link_abort_if_file() {
 	fi
 	if [[ -L $DST && "$(readlink -- "$DST")" = $SRC ]]; then
 		echo "    $DST is already symlinked to the specified file, moving on."
-		return 1
 	elif [ -f $DST ]; then
 		echo "    ERROR: $DST exists already, we're chickening out!"
 		exit
@@ -29,5 +28,4 @@ link_if_not_already_link_abort_if_file() {
 		ln -s $SRC $DST
 		echo "    done"
 	fi
-	return 0
 }
