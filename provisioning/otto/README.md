@@ -44,6 +44,7 @@ Run `sudo ./provision_010_base.sh`
 * Links `bashrc.sh` and `bash_profile.sh` dotfiles
 * Installs vim, emacs, git, tmux
 * Configures tmux
+* Configures git for user `ottotechnogecko@gmail.com`
 
 ## Step 4: Configure network 
 

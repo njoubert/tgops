@@ -21,8 +21,10 @@ link_if_not_already_link_abort_if_file $PROVISION/dotfiles/bash_profile.sh $HOME
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/bashrc.sh $HOME/.bashrc
 
 # Install basic editors
-echo_section "Installing emacs, vim, git"
+echo_section "Installing emacs, vim"
 sudo apt install emacs vim git
+echo_section "Linking emacs, vim config files"
+link_if_not_already_link_abort_if_file $PROVISION/dotfiles/emacs $HOME/.emacs
 
 # Install tmux and symlink configs
 echo_section "Installing tmux"
@@ -32,5 +34,7 @@ link_if_not_already_link_abort_if_file $PROVISION/dotfiles/tmux.conf $HOME/.tmux
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/tmux $HOME/.tmux
 
 # Linking git config files
+echo_section "Installing git"
+sudo apt install git
 echo_section "Linking git config files"
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/gitconfig $HOME/.gitconfig  
