@@ -64,12 +64,7 @@ Run `sudo ./provision_020_network.sh`:
 * disables ipv6
 * enables ipv4 forwarding
 * installs dhcp server
-
-### Configure DHCP Server
-
-Edit `/etc/default/isc-dhcp-server` and add only the autonomy interface to the list of interfaces
-Edit `/etc/dhcp/dhcpd.conf`
-Restart service `sudo service isc-dhcp-server restart`
+* prompts you to configure DHCP server
 
 * To see logs: `journalctl -u isc-dhcp-server`
 * To see current leases `cat /var/lib/dhcp/dhcpd.leases`
