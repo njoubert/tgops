@@ -1,9 +1,3 @@
-###
-### TechnoGecko Provisioning Script, $(date)
-### 
-echo "TechnoGecko Environment"
-### EOF
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -121,4 +115,18 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
- 
+
+###
+### TechnoGecko Provisioning Script, Sat Jul 13 23:24:56 PDT 2019
+### 
+echo "TechnoGecko Environment"
+
+
+echo "Useful Utilities:"
+echo "  bmon      - graphical network throughput monitor"
+echo "  mosh      - a better ssh terminal"
+echo "Useful Logs:"
+echo "  /var/lib/dhcp/dhcpd.leases"
+echo "  journalctl -u isc-dhcp-server"
+### EOF
+
