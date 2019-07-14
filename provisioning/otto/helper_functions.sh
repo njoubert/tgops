@@ -11,16 +11,16 @@
 
 
 echo_section() {
-	echo -e "\e[1m+ $1\e[0m"
+	echo -e "\e[1;42m+ $1\e[0m"
 }
 
 echo_error_and_exit() {
-	echo -e "\e[101mERROR: $1\e[101m"
+	echo -e "\e[101mERROR: $1\e[0m"
 	exit
 }
 
 echo_warn_and_continue() {
-	echo -e "\e[43mWARN: $1\e[101m"
+	echo -e "\e[43mWARN: $1\e[0m"
 }
 
 # Usage:
