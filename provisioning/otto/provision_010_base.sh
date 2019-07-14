@@ -16,6 +16,7 @@
 ###### MEAT AND POTATOES ######
 
 # Link .bashrc and .bach_profile dotfiles
+echo "+ Linking bash dotfiles"
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/bash_profile.sh $HOME/.bash_profile
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/bashrc.sh $HOME/.bashrc
 
@@ -29,7 +30,6 @@ sudo apt-get install tmux=2.6-3ubuntu0.1
 echo "+ Symlinking tmux configuration files"
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/tmux.conf $HOME/.tmux.conf
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/tmux $HOME/.tmux.conf
-
 
 # Linking git config files
 echo "+ Linking git config files"

@@ -9,25 +9,24 @@
 # EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
-link_if_not_already_link_abort_if_file() { # $1 is SRC, $2 is DEST 
-	# Usage:
-	# echo "+ Linking git config files"
-	# if is_not_already_link_abort_if_file DEST; then
-	# 	ln -s DEST SOURCE 
-	# 	echo "    done"
-	# fi
+# Usage:
+# 	echo "+ Linking X files"
+# 	link_if_not_already_link_abort_if_file SRC DEST
+link_if_not_already_link_abort_if_file() {
+	local SRC=${1}
+	local DST=${2}
 	if [ "$#" -ne 2 ]; then
 		echo "   ERROR: link_if_not_already_link_abort_if_file(): Requires 2 arguments"
 		exit
 	fi
-	if [ -L $2 ]; then
-		echo "    $2 is already a simlink, skipping..."
+	if [[ -L $DST && "$(readlink -- "$DST")" = $SRC ]]; then
+		echo "    $DST is already symlinked to the specified file, moving on."
 		return 1
-	elif [ -f $2 ]; then
-		echo "    ERROR: $2 is a file on disk, we're chickening out..."
+	elif [ -f $DST ]; then
+		echo "    ERROR: $DST exists already, we're chickening out!"
 		exit
 	else
-		ln -s $1 $2
+		ln -s $SRC $DST
 		echo "    done"
 	fi
 	return 0
