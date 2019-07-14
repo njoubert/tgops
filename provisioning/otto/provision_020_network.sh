@@ -63,7 +63,7 @@ echo "+ Setting hostname"
 prompt_and_set_hostname
 
 # install networking tools and servers
-echo "+ Installig net-tools openssh-server isc-dhcp-server mosh"
+echo -e "\e[1m+ Installig net-tools openssh-server isc-dhcp-server mosh\e[0m"
 apt install net-tools openssh-server isc-dhcp-server mosh
 
 ### setup networking ###
