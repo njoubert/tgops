@@ -59,7 +59,8 @@ sudo -u $LOGGED_IN_USER dconf write /org/gnome/desktop/remote-access/require-enc
 sudo -u $LOGGED_IN_USER dconf write /org/gnome/desktop/remote-access/vnc-password \"\'$(echo -n $VNC_PASS | base64)\'\"
 #sudo -u $LOGGED_IN_USER dconf dump /org/gnome/desktop/remote-access/
 echo "+ Enabling VNC on these interfaces:"
-ENABLED_INTERFACES=$(nmcli -m multiline c s | grep UUID | tr -s ' ' | nmcli -m multiline c s | grep UUID | tr -s ' ' | cut -d ' ' -f2 | sed -e 's/^\|$/\x27/g' | sed -e '$!s/$/,/g' | tr -d "\n" | awk '{print "["$0"]"}')
+#ENABLED_INTERFACES=$(nmcli -m multiline c s | grep UUID | tr -s ' ' | nmcli -m multiline c s | grep UUID | tr -s ' ' | cut -d ' ' -f2 | sed -e 's/^\|$/\x27/g' | sed -e '$!s/$/,/g' | tr -d "\n" | awk '{print "["$0"]"}')
+ENABLED_INTERFACES=$(nmcli -g device,uuid con | grep "^e" | cut -d: -f2 | sed -e 's/^\|$/\x27/g' | sed -e '$!s/$/,/g' | tr -d "\n" | awk '{print "["$0"]"}')
 sudo -u $LOGGED_IN_USER dconf write /org/gnome/settings-daemon/plugins/sharing/vino-server/enabled-connections "$ENABLED_INTERFACES"
 sudo -u $LOGGED_IN_USER dconf dump /org/gnome/settings-daemon/plugins/sharing/vino-server/
 
