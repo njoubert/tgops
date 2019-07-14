@@ -59,30 +59,30 @@ prompt_and_generate_ssh_keys() {
 
 ###### MEAT AND POTATOES ######
 # user prompt to set hostname
-echo "+ Setting hostname"
+echo_section" Setting hostname"
 prompt_and_set_hostname
 
 # install networking tools and servers
-echo -e "\e[1m+ Installig net-tools openssh-server isc-dhcp-server mosh\e[0m"
+echo_section "Installig net-tools openssh-server isc-dhcp-server mosh"
 apt install net-tools openssh-server isc-dhcp-server mosh
 
 ### setup networking ###
 # disable ipv6
-echo "+ Disabling IPv6"
+echo_section "Disabling IPv6"
 sysctl -w net.ipv6.conf.all.disable_ipv6=1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
 # enable ipv4 routing
-echo "+ Enabling IPv4 Routing"
+echo_section "Enabling IPv4 Routing"
 echo -e "$SCRIPT_SIG" >> /etc/sysctl.conf
 echo -e "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 sysctl -w net.ipv4.ip_forward=1
 
 # Disable firewalls. We don't need that on our private network
-echo "+ Disabling ufw firewall"
+echo_section "Disabling ufw firewall"
 ufw disable
 
 # Get SSH Keys up
-echo "+ Generating ssh keys"
+echo_section "Generating ssh keys"
 prompt_and_generate_ssh_keys
 
