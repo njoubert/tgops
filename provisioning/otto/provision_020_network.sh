@@ -15,46 +15,46 @@
 . helper_functions.sh
 
 prompt_and_set_hostname() {
-	echo "The current hostname is \"$HOSTNAME\""
-	read -p "Do you want to change the hostname? [Yn] " -n 1 -r
-	echo
-	if [[ $REPLY =~ ^[Yy]$ ]]
-	then
-		read -p "Please enter new hostname: "
-		NEW_HOSTNAME=$REPLY
-		read -p "About to change hostname to $NEW_HOSTNAME, continue? [Yn] " -n 1 -r
-		echo
-		if [[ $REPLY =~ ^[Yy]$ ]]
-		then
-			hostnamectl set-hostname $NEW_HOSTNAME
-			if [[ $? != 0 ]]; then
-				echo "WARNING: Failed to set hostname. Continuing"
-			else
-				CHECK_HOSTNAME=$(hostnamectl | sed -n -e 's/.*hostname: \(.*\)/\1/p')
-				echo "Hostname is now $CHECK_HOSTNAME"
-			fi
-		else
-			prompt_and_set_hostname
-		fi	
-	fi
+    echo "The current hostname is \"$HOSTNAME\""
+    read -p "Do you want to change the hostname? [Yn] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        read -p "Please enter new hostname: "
+        NEW_HOSTNAME=$REPLY
+        read -p "About to change hostname to $NEW_HOSTNAME, continue? [Yn] " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]
+        then
+            hostnamectl set-hostname $NEW_HOSTNAME
+            if [[ $? != 0 ]]; then
+                echo "WARNING: Failed to set hostname. Continuing"
+            else
+                CHECK_HOSTNAME=$(hostnamectl | sed -n -e 's/.*hostname: \(.*\)/\1/p')
+                echo "Hostname is now $CHECK_HOSTNAME"
+            fi
+        else
+            prompt_and_set_hostname
+        fi  
+    fi
 }
 
 prompt_and_generate_ssh_keys() {
-	if [ -f $HOME/.ssh/id_rsa ]; then
-		echo ".ssh/id_rsa detected. Skipping SSH key generation"
-	else
-		echo "No .ssh/id_rsa detected!"
-		read -p "Would you like to generate SSH keys? [Yn] " -n 1 -r
-		echo
-		if [[ $REPLY =~ ^[Yy]$ ]]
-		then
-			echo "+ Configuring SSH and generating SSH Keys for $OTTOEMAIL with no passphrase"
-			ssh-keygen -t rsa -b 4096 -C "$OTTOEMAIL" -f $HOME/.ssh/id_rsa -N ""
-			echo "+ Please add your public SSH key to Gitlab, etc."
-			echo "+   Contents of ~/.ssh/id_rsa.pub:"
-			cat $HOME/.ssh/id_rsa.pub
-		fi
-	fi
+    if [ -f $HOME/.ssh/id_rsa ]; then
+        echo ".ssh/id_rsa detected. Skipping SSH key generation"
+    else
+        echo "No .ssh/id_rsa detected!"
+        read -p "Would you like to generate SSH keys? [Yn] " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]
+        then
+            echo "+ Configuring SSH and generating SSH Keys for $OTTOEMAIL with no passphrase"
+            ssh-keygen -t rsa -b 4096 -C "$OTTOEMAIL" -f $HOME/.ssh/id_rsa -N ""
+            echo "+ Please add your public SSH key to Gitlab, etc."
+            echo "+   Contents of ~/.ssh/id_rsa.pub:"
+            cat $HOME/.ssh/id_rsa.pub
+        fi
+    fi
 }
 
 ###### MEAT AND POTATOES ######
