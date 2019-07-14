@@ -77,10 +77,6 @@ Run `sudo ./provision_030_remote_access.sh`:
 * generates ssh keys
 * configures Vino for remote VNC access, with password `techno`
 
-### Install VirtualBox and image of Autonomous VM.
-
-We separate our otto component from the rest for development purposes. So we can snapshot VM.
-
 
 
 # On your Local Dev Machine
@@ -118,10 +114,8 @@ Virtualbox:
 
 * Basic Tools (vim, git, emacs, tmux)
 	* `sudo ./provision_010_base.sh`
-* SSH Access
+* SSH Access, VNC access, SMB access
 	* `sudo ./provision_020_network.sh`
-* Shared Folder for remote text editing with Sublime
 
-* Screen Sharing
 
 
