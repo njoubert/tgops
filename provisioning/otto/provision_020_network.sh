@@ -83,5 +83,6 @@ echo "+ Disabling ufw firewall"
 ufw disable
 
 # Get SSH Keys up
+echo "+ Generating ssh keys"
 prompt_and_generate_ssh_keys
 
