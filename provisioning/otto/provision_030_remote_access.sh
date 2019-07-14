@@ -44,7 +44,7 @@ apt install openssh-server
 echo_section "Generating ssh keys"
 prompt_and_generate_ssh_keys
 
-###Remote Desktop
+### Remote Desktop
 echo_section "Configuring VNC for Remote Access"
 VNC_PASS=techno
 echo "+ VNC Password will be set to \"$VNC_PASS\""

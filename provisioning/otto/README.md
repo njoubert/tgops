@@ -64,8 +64,6 @@ Run `sudo ./provision_020_network.sh`:
 * disables ipv6
 * enables ipv4 forwarding
 * installs dhcp server
-* installs ssh
-* generates ssh keys
 
 ### Configure DHCP Server
 
@@ -76,6 +74,13 @@ Restart service `sudo service isc-dhcp-server restart`
 * To see logs: `journalctl -u isc-dhcp-server`
 * To see current leases `cat /var/lib/dhcp/dhcpd.leases`
 
+
+### Provision Remote access
+
+Run `sudo ./provision_030_remote_access.sh`:
+* installs ssh
+* generates ssh keys
+* configures Vino for remote VNC access, with password `techno`
 
 ### Install VirtualBox and image of Autonomous VM.
 
