@@ -11,7 +11,7 @@
 
 
 echo_section() {
-    echo -e "\e[1;42m+ $1\e[0m"
+    echo -e "\e[1;102m+ $1\e[0m"
 }
 
 echo_error_and_exit() {
