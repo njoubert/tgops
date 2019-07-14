@@ -59,7 +59,7 @@ prompt_and_generate_ssh_keys() {
 
 ###### MEAT AND POTATOES ######
 # user prompt to set hostname
-echo_section" Setting hostname"
+echo_section "Setting hostname"
 prompt_and_set_hostname
 
 # install networking tools and servers
