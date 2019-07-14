@@ -60,23 +60,28 @@ echo_warn_and_continue() {
     echo -e "\e[30;103mWARN: $1\e[0m"
 }
 
+echo_write () {
+  echo -e "\e[34mWRITING: $1\e[0m"
+}
+
+
 # Usage:
 #   echo "+ Linking X files"
 #   link_if_not_already_link_abort_if_file SRC DEST
 link_if_not_already_link_abort_if_file() {
-    local SRC=${1}
-    local DST=${2}
-    if [ "$#" -ne 2 ]; then
-        echo_error_and_exit "   ERROR: link_if_not_already_link_abort_if_file(): Requires 2 arguments"
-    fi
-    if [[ -L $DST && "$(readlink -- "$DST")" = $SRC ]]; then
-        echo_warn_and_continue "    $DST is already symlinked to the specified file, moving on."
-    elif [ -f $DST ]; then
-        echo_error_and_exit "    ERROR: $DST exists already, we're chickening out!"
-    else
-        ln -s $SRC $DST
-        echo "    done"
-    fi
+  local SRC=${1}
+  local DST=${2}
+  if [ "$#" -ne 2 ]; then
+    echo_error_and_exit "   ERROR: link_if_not_already_link_abort_if_file(): Requires 2 arguments"
+  fi
+  if [[ -L $DST && "$(readlink -- "$DST")" = $SRC ]]; then
+    echo_warn_and_continue "    $DST is already symlinked to the specified file, moving on."
+  elif [ -f $DST ]; then
+    echo_error_and_exit "    ERROR: $DST exists already, we're chickening out!"
+  else
+    ln -s $SRC $DST
+    echo "    done"
+  fi
 }   
 
 # Usage:
@@ -85,8 +90,8 @@ read_and_confirm() {
   local RESULTSVAR=$1
   local PROMPT="$2"
   local DEFAULT="$3"
-  if [ "$#" -ne 2 ]; then
-    echo_error_and_exit "read_and_confirm requires 2 arguments"
+  if [ "$#" -ne 3 ]; then
+    echo_error_and_exit "read_and_confirm requires 3 arguments"
     exit
   fi
 
@@ -112,9 +117,10 @@ write_to_file_if_not_exist() {
   if [ "$#" -ne 2 ]; then
     echo_error_and_exit "write_to_file_if_not_exists requires 2 arguments"
   fi
-  if grep -q "^$CFG_STR" $CFG_FILE; then
-    echo_warn_and_continue "net.ipv4.ip_forward already set"
+  if grep -zq "^$CFG_STR" $CFG_FILE; then
+    echo_warn_and_continue "$CFG_STR already set"
   else
+    echo_write "Writing to $CFG_FILE"
     echo -e "$SCRIPT_SIG" >> $CFG_FILE
     echo -e "$CFG_STR" >> $CFG_FILE
     echo -e "$SCRIPT_SIG_END" >> $CFG_FILE

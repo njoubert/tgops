@@ -123,8 +123,9 @@ echo "TechnoGecko Environment"
 
 
 echo "Useful Utilities:"
-echo "  bmon      - graphical network throughput monitor"
-echo "  mosh      - a better ssh terminal"
+echo "  bmon                - graphical network throughput monitor"
+echo "  mosh                - a better ssh terminal"
+echo "  dhcp-lease-list     - see DHCP leases"
 echo "Useful Logs:"
 echo "  /var/lib/dhcp/dhcpd.leases"
 echo "  journalctl -u isc-dhcp-server"
