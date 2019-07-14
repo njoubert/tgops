@@ -29,7 +29,7 @@ echo "+ Installing tmux"
 sudo apt-get install tmux=2.6-3ubuntu0.1
 echo "+ Symlinking tmux configuration files"
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/tmux.conf $HOME/.tmux.conf
-link_if_not_already_link_abort_if_file $PROVISION/dotfiles/tmux $HOME/.tmux.conf
+link_if_not_already_link_abort_if_file $PROVISION/dotfiles/tmux $HOME/.tmux
 
 # Linking git config files
 echo "+ Linking git config files"
