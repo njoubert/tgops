@@ -65,4 +65,9 @@ sudo -u $LOGGED_IN_USER dconf write /org/gnome/settings-daemon/plugins/sharing/v
 sudo -u $LOGGED_IN_USER dconf dump /org/gnome/settings-daemon/plugins/sharing/vino-server/
 
 ### File Sharing
-
+echo_section "Installing and Configuring Samba file sharing to share home directory"
+systemctl stop smbd.service nmbd.service
+sudo apt install samba
+mv /etc/samba/smb.conf /etc/samba/smb.conf.ORIG
+ln -s $PROVISION/dotfiles/smb.conf /etc/samba/smb.conf
+systemctl start smbd.service nmbd.service
