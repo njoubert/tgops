@@ -15,12 +15,12 @@ echo_section() {
 }
 
 echo_error_and_exit() {
-    echo -e "\e[1;30;101mERROR: $1\e[0m"
+    echo -e "\e[30;101mERROR: $1\e[0m"
     exit
 }
 
 echo_warn_and_continue() {
-    echo -e "\e[1;30;103mWARN: $1\e[0m"
+    echo -e "\e[30;103mWARN: $1\e[0m"
 }
 
 # Usage:
