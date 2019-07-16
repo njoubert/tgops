@@ -8,6 +8,11 @@ Provisioning scripts for individual applications and areas are provided.
 
 # Preamble: Credentials
 
+**Ubuntu Login**
+
+All our work assumes you have a `gecko` user with password `techno`, with superuser privileges
+
+
 **GITLAB**
 
 We have a separate gitlab account for access from the autonomous computers
