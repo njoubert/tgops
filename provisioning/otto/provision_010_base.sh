@@ -34,6 +34,6 @@ link_if_not_already_link_abort_if_file $PROVISION/dotfiles/tmux $HOME/.tmux
 
 # Linking git config files
 echo_section "Installing git"
-sudo apt install git
+sudo apt install git gitk
 echo_section "Linking git config files"
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/gitconfig $HOME/.gitconfig  

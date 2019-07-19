@@ -131,4 +131,7 @@ echo "  /var/lib/dhcp/dhcpd.leases"
 echo "  journalctl -u isc-dhcp-server"
 ### EOF
 
-source /opt/ros/melodic/setup.bash
+### ROS Melodic Configuration
+if [ -f /opt/ros/melodic/setup.bash ]; then
+    source /opt/ros/melodic/setup.bash
+fi
