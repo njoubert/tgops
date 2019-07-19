@@ -9,8 +9,8 @@
 # EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
-LOGGED_IN_USER=$(who am i | cut -d ' ' -f1)
-
+#LOGGED_IN_USER=$(who am i | cut -d ' ' -f1)
+LOGGED_IN_USER=gecko
 
 ###### INCLUDES ######
 . helpers.sh
@@ -52,7 +52,8 @@ export DISPLAY=:0.0
 PID=$(pgrep gnome-session)
 DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/environ | cut -d= -f2)
 export DBUS_SESSION_BUS_ADDRESS
-sudo -u $LOGGED_IN_USER dconf write /org/gnome/desktop/remote-access/enabled true
+sudo -u $LOGGED_IN_USER dconf write /org/gnome/desktop/remote-access/enabled false
+sleep 1
 sudo -u $LOGGED_IN_USER dconf write /org/gnome/desktop/remote-access/prompt-enabled false
 sudo -u $LOGGED_IN_USER dconf write /org/gnome/desktop/remote-access/authentication-methods "['vnc']"
 sudo -u $LOGGED_IN_USER dconf write /org/gnome/desktop/remote-access/require-encryption false
@@ -62,6 +63,8 @@ echo "+ Enabling VNC on these interfaces:"
 #ENABLED_INTERFACES=$(nmcli -m multiline c s | grep UUID | tr -s ' ' | nmcli -m multiline c s | grep UUID | tr -s ' ' | cut -d ' ' -f2 | sed -e 's/^\|$/\x27/g' | sed -e '$!s/$/,/g' | tr -d "\n" | awk '{print "["$0"]"}')
 ENABLED_INTERFACES=$(nmcli -g device,uuid con | grep "^e" | cut -d: -f2 | sed -e 's/^\|$/\x27/g' | sed -e '$!s/$/,/g' | tr -d "\n" | awk '{print "["$0"]"}')
 sudo -u $LOGGED_IN_USER dconf write /org/gnome/settings-daemon/plugins/sharing/vino-server/enabled-connections "$ENABLED_INTERFACES"
+sleep 1
+sudo -u $LOGGED_IN_USER dconf write /org/gnome/desktop/remote-access/enabled true
 sudo -u $LOGGED_IN_USER dconf dump /org/gnome/settings-daemon/plugins/sharing/vino-server/
 
 ### File Sharing
