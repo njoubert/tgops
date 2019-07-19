@@ -12,7 +12,6 @@
 #LOGGED_IN_USER=$(who am i | cut -d ' ' -f1)
 LOGGED_IN_USER=gecko
 
-###### INCLUDES ######
 . helpers.sh
 
 prompt_and_generate_ssh_keys() {
@@ -69,7 +68,6 @@ sudo -u $LOGGED_IN_USER dconf dump /org/gnome/settings-daemon/plugins/sharing/vi
 
 ### File Sharing
 echo_section "Installing and Configuring Samba file sharing to share home directory"
-systemctl stop smbd.service nmbd.service
 sudo apt install samba
 mv /etc/samba/smb.conf /etc/samba/smb.conf.ORIG
 ln -s $PROVISION/dotfiles/smb.conf /etc/samba/smb.conf

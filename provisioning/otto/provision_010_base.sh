@@ -21,7 +21,7 @@ link_if_not_already_link_abort_if_file $PROVISION/dotfiles/bashrc.sh $HOME/.bash
 
 # Install basic editors
 echo_section "Installing emacs, vim"
-sudo apt install emacs vim git
+sudo apt install emacs vim 
 echo_section "Linking emacs, vim config files"
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/emacs $HOME/.emacs
 
