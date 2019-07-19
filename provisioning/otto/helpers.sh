@@ -24,14 +24,26 @@ else
 fi
 
 # only run as root, we're installing stuff
-if [ "$EUID" -ne 0 ]; then 
-    echo "ERROR: Please run as root"
-    exit
+if [ -z "$NO_SUDO" ]; then
+  if [ "$EUID" -ne 0 ]; then 
+      echo "ERROR: Please run as root"
+      exit
+  else
+      echo "+ root admin privileges detected"
+  fi
 else
-    echo "+ root admin privileged detected"
+  if [ "$EUID" -eq "0" ]; then 
+      echo "ERROR: Do not run as root"
+      exit
+  else
+      echo "+ normal user privileges detected"
+  fi
 fi
 
 # Global vars
+
+#LOGGED_IN_USER=$(who am i | cut -d ' ' -f1) # only works when ssh'd in.
+LOGGED_IN_USER=gecko # We use this to do non-sudo work, so this better be right.
 OTTOEMAIL="ottotechnogecko@gmail.com"
 PROVISION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 SCRIPT_SIG="$(cat <<EOF
