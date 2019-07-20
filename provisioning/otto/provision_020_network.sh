@@ -117,6 +117,9 @@ EOF
    echo -e "$SCRIPT_SIG" >> /etc/dhcp/dhcpd.conf
    echo -e "$DHCP_LEASE_CONFIG_STR" >> /etc/dhcp/dhcpd.conf
    echo -e "$SCRIPT_SIG_END" >> /etc/dhcp/dhcpd.conf
+
+   # Make NetworkManager play nice with our DHSPC
+   link_if_not_already_link_bck_if_file $PROVISION/dotfiles/isc-dhcp-server.service /etc/systemd/system/multi-user.target.wants/isc-dhcp-server.service 
    
   systemctl restart isc-dhcp-server
 else

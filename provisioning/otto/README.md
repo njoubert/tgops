@@ -82,3 +82,7 @@ Run `sudo ./provision_030_remote_access.sh`:
 * configures Vino for remote VNC access, with password `techno`
 * configures smb to share `/` and `/home/gecko`
 
+### Provision ROS
+
+Run `sudo ./provision_040_ros.sh`
+

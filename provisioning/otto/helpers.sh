@@ -97,6 +97,24 @@ link_if_not_already_link_abort_if_file() {
 }   
 
 # Usage:
+#   echo "+ Linking X files"
+#   link_if_not_already_link_bck_if_file SRC DEST
+link_if_not_already_link_bck_if_file() {
+  local SRC=${1}
+  local DST=${2}
+  if [[ -L $DST && "$(readlink -- "$DST")" = $SRC ]]; then
+    echo_warn_and_continue "    $DST is already symlinked to the specified file, moving on."
+  else
+    if [ -f $DST ]; then
+      echo_warn_and_continue "    $DST exists already and isnt our symlink, we're backing up"
+      mv $DST $DST.bak
+    fi
+    ln -s $SRC $DST
+    echo "    done"
+  fi
+}   
+
+# Usage:
 #  read_and_confirm VARNAME "Prompt?" "default"
 read_and_confirm() {
   local RESULTSVAR=$1

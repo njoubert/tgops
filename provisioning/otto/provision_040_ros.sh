@@ -13,6 +13,8 @@
 NO_SUDO=True
 . helpers.sh
 
+echo_section "Installing dev tools"
+sudo apt-get install build-essential python-pip python-tox pandoc
 
 echo_section "Adding ROS packages to apt"
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
