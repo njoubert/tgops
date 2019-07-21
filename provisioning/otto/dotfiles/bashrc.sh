@@ -135,3 +135,6 @@ echo "  journalctl -u isc-dhcp-server"
 if [ -f /opt/ros/melodic/setup.bash ]; then
     source /opt/ros/melodic/setup.bash
 fi
+
+# Bash prompt for Git directories.
+source $SCRIPT_DIR/.git_prompt.sh
