@@ -16,6 +16,7 @@
 
 # Link .bashrc and .bach_profile dotfiles
 echo_section "Linking bash dotfiles"
+mv $HOME/.bashrc $HOME/.bashrc.ORIG
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/bash_profile.sh $HOME/.bash_profile
 link_if_not_already_link_abort_if_file $PROVISION/dotfiles/bashrc.sh $HOME/.bashrc
 
