@@ -86,3 +86,36 @@ Run `sudo ./provision_030_remote_access.sh`:
 
 Run `sudo ./provision_040_ros.sh`
 
+# Setting up development machine
+
+Plug in to the autonomy network and otto will provide you with an IP address through its DHCP server. The IP address that you will receive should be of the form 10.1.32.X.
+
+You should now be able to ssh into otto with user `gecko`. If you run `ssh gecko@10.1.32.100` you will be prompted for a password. Enter `techno`.
+
+To skip the password prompt every time you log in, first setup up an ssh key if you don't already have one using the command:
+```
+ssh-keygen -t rsa -b 4096 -C "$YOUR_EMAIL_ADDRESS" -f $HOME/.ssh/id_rsa -N ""
+```
+
+and then copy over your public key to the host machine:
+
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub gecko@10.1.32.100
+```
+And enter the password when prompted. Try again to ssh into the machine and you should not be prompted for a password this time.
+
+Edit ~/.ssh/config and add the following stanza to the end of the file:
+
+```
+Host otto
+    HostName 10.1.32.100
+    Port 22
+    User gecko
+    IdentityFile ~/.ssh/id_rsa
+```
+
+This will allow you to ssh into the otto machine by simply typing:
+```
+ssh otto
+```
+
