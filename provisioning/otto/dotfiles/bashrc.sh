@@ -136,5 +136,8 @@ if [ -f /opt/ros/melodic/setup.bash ]; then
     source /opt/ros/melodic/setup.bash
 fi
 
-# Bash prompt for Git directories.
-source $SCRIPT_DIR/.git_prompt.sh
+### Techno Gecko ROS Workspace Configuration
+if [ -f $HOME/Code/tgdriver/ros_ws/devel/setup.bash ]; then
+  echo "Sourcing ~/Code/tgdriver/ros_ws/devel/setup.bash"
+  source $HOME/Code/tgdriver/ros_ws/devel/setup.bash
+fi
